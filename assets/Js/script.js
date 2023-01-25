@@ -86,8 +86,8 @@ $(document).ready(function()
             {
                 stateClass ="future";
             } 
-        $("#time"+i).append("<textarea id=\"textArea" + i + "\"" + "class=\"col-8 " + stateClass + "\"textarea\">" + schedule[i].tasks + "</textarea>");  //append child div "textArea" to the tiem row"
-        $("#time"+i).append("<div id=\"saveBtn" + i + "\"" + "data-index=\"" + i + "\"" + "class=\"col-2 saveBtn\">" + "save" + "</div>");  //append child div "saveBtn" to the time row"
+        $("#time"+i).append("<textarea id=\"textArea" + i + "\"" + "class=\"col-8 " + stateClass + "\"textarea\">" + schedule[i].tasks + "</textarea>");  //append child div "textArea" to the time row"
+        $("#time"+i).append("<button id=\"saveBtn" + i + "\"" + "data-index=\"" + i + "\"" + "class=\"col-2 saveBtn\">" + "save" + "</button>");  //append child div "saveBtn" to the time row"
     });
 
     //once the rows are made then add the click event for when the user clicks a save div
@@ -119,14 +119,8 @@ function loadtasks() {
 function saveTask(index)
 {
     var textArea = $("#textArea" + index);  //set user tasks equal to the id of the current textarea
-    if (textArea.val() !== "") //make sure the textarea is not blank
-    {
+    
         schedule[index].tasks = textArea.val();  //set the tasks property to the current index
 
         localStorage.setItem("schedule", JSON.stringify(schedule));  //convert to a string and send to local storage
     }
-    else
-    {
-        alert("no tasks to save")  //alert the user no data to save
-    }
-};
